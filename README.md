@@ -14,7 +14,7 @@ You can install the released version of LIANLABDATA from GitHub:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Lian-Lab/LIANLABDATA")
+devtools::install_github("Lian-Lab/LIANLAB")
 ```
 
 ## Example
