@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of LIANLAB is to …
+The goal of LIANLAB is to integrate analysis methods and simplify analysis process.
 
 ## Installation
 
