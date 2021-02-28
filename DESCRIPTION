@@ -1,0 +1,54 @@
+Package: LIANLAB
+Title: To make it easier and simpler to analyze
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Bian",
+           family = "zh",
+           role = c("aut", "cre"),
+           email = "scut.zhenhaub@gmail.com"),
+    person(given = "Long",
+           family = "J",
+           role = c("aut"),
+           email = "lj9358@mail.ustc.edu.cn"))
+Description: To make it easier and simpler to analyze.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends:
+    R (>= 3.6.0)
+Imports: 
+    dplyr,
+    ggplot2,
+    ggrepel,
+    rlang,
+    Seurat,
+    clusterProfiler,
+    enrichplot,
+    pheatmap,
+    biomaRt,
+    RColorBrewer,
+    stringr,
+    msigdf,
+    reshape2,
+    ggpubr,
+    SingleR,
+    SeuratObject,
+    utils,
+    scater,
+    LIANLABDATA,
+    GSVA,
+    GSEABase,
+    DOSE,
+    monocle,
+    VGAM,
+    BiocGenerics,
+    limma
+Suggests: 
+    org.Mm.eg.db,
+    org.Hs.eg.db,
+    future,
+    stats,
+    corrplot,
+    graphics
