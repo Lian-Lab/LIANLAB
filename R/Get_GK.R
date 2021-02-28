@@ -1,6 +1,6 @@
 #' Batch/Specify cell population for GO and KEGG analyse
 #'
-#' @param marker result of FindAllMarkers(), including cols named avg_logFC, p_val_adj, gene
+#' @param marker result of FindAllMarkers(), including cols named avg_log2FC, p_val_adj, gene
 #' @param spe_cluster the clusters you interested
 #' @param species m/h
 #' @param logfc.cutoff cut off the logFC
@@ -16,12 +16,12 @@
 #' Get_GK1( markers_top,spe_cluster = 'Naive CD4 T',species = 'm')
 #' }
 Get_GK1 = function(marker,spe_cluster = NULL,species = c('m','h'),logfc.cutoff=0.1,p.cutoff=0.01){
-  cluster <- avg_logFC <- p_val_adj <- gene <- NULL
+  cluster <- avg_log2FC <- p_val_adj <- gene <- NULL
   if ( !is.null(spe_cluster)) {
     if(length(spe_cluster)==1){
       clustermarker = marker[which(marker$cluster == spe_cluster),]
-      up = clustermarker %>% filter(avg_logFC > logfc.cutoff & p_val_adj < p.cutoff)
-      down = clustermarker %>% filter(avg_logFC < -logfc.cutoff & p_val_adj < p.cutoff)
+      up = clustermarker %>% filter(avg_log2FC > logfc.cutoff & p_val_adj < p.cutoff)
+      down = clustermarker %>% filter(avg_log2FC < -logfc.cutoff & p_val_adj < p.cutoff)
       up_gene=up$gene
       down_gene=down$gene
       if (length(up_gene)==0) {print('There is no up gene')}
@@ -35,8 +35,8 @@ Get_GK1 = function(marker,spe_cluster = NULL,species = c('m','h'),logfc.cutoff=0
     }else{
       for (j in spe_cluster ) {
         clustermarker = marker[which(marker$cluster == j),]
-        up = clustermarker %>% filter(avg_logFC > logfc.cutoff & p_val_adj < p.cutoff)
-        down = clustermarker %>% filter(avg_logFC < -logfc.cutoff & p_val_adj < p.cutoff)
+        up = clustermarker %>% filter(avg_log2FC > logfc.cutoff & p_val_adj < p.cutoff)
+        down = clustermarker %>% filter(avg_log2FC < -logfc.cutoff & p_val_adj < p.cutoff)
         up_gene=up$gene
         down_gene=down$gene
         if (length(up_gene)==0) {print('There is no up gene')}
@@ -54,8 +54,8 @@ Get_GK1 = function(marker,spe_cluster = NULL,species = c('m','h'),logfc.cutoff=0
   }else{
     for (i in  unique(marker$cluster)) {
       clustermarker = marker[which(marker$cluster == i),]
-      up = clustermarker %>% filter(avg_logFC > logfc.cutoff & p_val_adj < p.cutoff)
-      down = clustermarker %>% filter(avg_logFC < -logfc.cutoff & p_val_adj < p.cutoff)
+      up = clustermarker %>% filter(avg_log2FC > logfc.cutoff & p_val_adj < p.cutoff)
+      down = clustermarker %>% filter(avg_log2FC < -logfc.cutoff & p_val_adj < p.cutoff)
 
       up_gene=up$gene
       down_gene=down$gene
@@ -75,7 +75,7 @@ Get_GK1 = function(marker,spe_cluster = NULL,species = c('m','h'),logfc.cutoff=0
 
 #' GO and KEGG analyse of the result between two clusters
 #'
-#' @param marker result of FindMarkers() or other,including cols named avg_logFC, p_val_adj, gene
+#' @param marker result of FindMarkers() or other,including cols named avg_log2FC, p_val_adj, gene
 #' @param species m/h
 #' @param logfc.cutoff cut off the logFC
 #' @param p.cutoff cut off the p value
@@ -89,10 +89,10 @@ Get_GK1 = function(marker,spe_cluster = NULL,species = c('m','h'),logfc.cutoff=0
 #' Get_GK2( markers_top,species = 'm')
 #' }
 Get_GK2 = function(marker,species = c('m','h'),logfc.cutoff=0.1,p.cutoff=0.01){
-  avg_logFC <- p_val_adj <- gene <- NULL
+  avg_log2FC <- p_val_adj <- gene <- NULL
   marker$gene = rownames(marker)
-  up = marker %>% filter(avg_logFC > logfc.cutoff & p_val_adj < p.cutoff)
-  down = marker %>% filter(avg_logFC < -logfc.cutoff & p_val_adj < p.cutoff)
+  up = marker %>% filter(avg_log2FC > logfc.cutoff & p_val_adj < p.cutoff)
+  down = marker %>% filter(avg_log2FC < -logfc.cutoff & p_val_adj < p.cutoff)
   up_gene=up$gene
   down_gene=down$gene
   if (length(up_gene)==0) {print('There is no up gene')}

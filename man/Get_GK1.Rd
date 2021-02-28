@@ -13,7 +13,7 @@ Get_GK1(
 )
 }
 \arguments{
-\item{marker}{result of FindAllMarkers(), including cols named avg_logFC, p_val_adj, gene}
+\item{marker}{result of FindAllMarkers(), including cols named avg_log2FC, p_val_adj, gene}
 
 \item{spe_cluster}{the clusters you interested}
 

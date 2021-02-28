@@ -7,7 +7,7 @@
 Get_GK2(marker, species = c("m", "h"), logfc.cutoff = 0.1, p.cutoff = 0.01)
 }
 \arguments{
-\item{marker}{result of FindMarkers() or other,including cols named avg_logFC, p_val_adj, gene}
+\item{marker}{result of FindMarkers() or other,including cols named avg_log2FC, p_val_adj, gene}
 
 \item{species}{m/h}
 
