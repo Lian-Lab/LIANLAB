@@ -1,6 +1,6 @@
 Package: LIANLAB
-Title: To make it easier and simpler to analyze
-Version: 0.0.0.9000
+Title: To integrate analysis methods and simplify analysis process.
+Version: 0.0.1.0
 Authors@R: c(
     person(given = "Bian",
            family = "zh",
