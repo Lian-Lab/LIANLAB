@@ -4,7 +4,13 @@
 \alias{Get_ave_heatmap}
 \title{To draw the average expression of the cluster}
 \usage{
-Get_ave_heatmap(seurat.obj, genes, split = c(T, F), colorm = NULL)
+Get_ave_heatmap(
+  seurat.obj,
+  genes,
+  split = c(T, F),
+  colorm = NULL,
+  cluster_row = F
+)
 }
 \arguments{
 \item{seurat.obj}{the seurat object}

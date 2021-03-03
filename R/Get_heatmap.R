@@ -14,7 +14,7 @@
 #' genes = c('CD8A','CD3','CD4')
 #' Get_ave_heatmap(pbmc_1k,genes,split=T)
 #' }
-Get_ave_heatmap = function(seurat.obj,genes,split=c(T,F),colorm=NULL){
+Get_ave_heatmap = function(seurat.obj,genes,split=c(T,F),colorm=NULL,cluster_row = F){
 
   type <- NULL
   umi2 = AverageExpression(seurat.obj,assays = 'RNA')
@@ -24,7 +24,7 @@ Get_ave_heatmap = function(seurat.obj,genes,split=c(T,F),colorm=NULL){
   count_data = count_data[rowSums(count_data)>0,]
 
   count_data = as.data.frame(t(scale(t(count_data))))
-  count_data = count_data[unique(genes),]
+  count_data = count_data[which(rownames(count_data)%in%unique(genes)),]
 
   annotation_col = data.frame(row.names = levels(seurat.obj),type = levels(seurat.obj))
   annotation_col$type = as.factor(annotation_col$type)
@@ -42,7 +42,7 @@ Get_ave_heatmap = function(seurat.obj,genes,split=c(T,F),colorm=NULL){
   }
   if (split==T) {
     p1 <-  pheatmap(count_data,
-                    cluster_rows = F,
+                    cluster_rows = cluster_row,
                     color = rev(RColorBrewer::brewer.pal(n = 11, name = "RdBu")),
                     annotation_colors = list("type"=colsss),
                     annotation_col = annotation_col,
@@ -62,7 +62,7 @@ Get_ave_heatmap = function(seurat.obj,genes,split=c(T,F),colorm=NULL){
     )
   }else{
     p1 <- pheatmap(count_data,
-                   cluster_rows = F,
+                   cluster_rows = cluster_row,
                    color = rev(RColorBrewer::brewer.pal(n = 11, name = "RdBu")),
                    annotation_colors = list("type"=colsss),
                    annotation_col = annotation_col,
