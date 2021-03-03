@@ -15,10 +15,10 @@
 #' character.obj <- Get_HM_gene_change( character.obj, species = 'm')
 #' }
 Get_HM_gene_change = function(Objects,species=c('h','m')){
-  input.file <- system.file('extdata','human_gene_ensembl.rds',package = 'LIANLAB')
+  input.file <- system.file('extdata','human_gene_ensembl.rds',package = 'LIANLABDATA')
   human <- readRDS(input.file)
 
-  input.file <- system.file('extdata','mouse_gene_ensembl.rds',package = 'LIANLAB')
+  input.file <- system.file('extdata','mouse_gene_ensembl.rds',package = 'LIANLABDATA')
   mouse <- readRDS(input.file)
 
 if (class(Objects)=="data.frame"|class(Objects)=="matrix") {
