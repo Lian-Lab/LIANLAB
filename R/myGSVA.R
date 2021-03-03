@@ -60,7 +60,7 @@ GSVA_pheatmap=function(em=NULL,seurat_object=NULL,
     em <- Get_HM_gene_change(em,species = 'm')
   }
   if (is.null(gspath)) {
-    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLAB')
+    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLABDATA')
   }
   geneset <- getGmt(gspath)
   escore <- gsva(as.matrix(em), min.sz=min.sz, max.sz=2000,geneset,verbose=FALSE, parallel.sz=8)
@@ -145,7 +145,7 @@ GSVA_difference=function(em=NULL,seurat_object=NULL,
 
   }
   if (is.null(gspath)) {
-    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLAB')
+    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLABDATA')
   }
   geneset=getGmt(gspath)
   gs_es <- gsva(as.matrix(merge_em), geneset, min.sz=min.sz, max.sz=2000, verbose=FALSE, parallel.sz=12)
@@ -304,7 +304,7 @@ GSVA_score_insert=function(seurat_object=NULL,
 
   }
   if (is.null(gspath)) {
-    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLAB')
+    gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLABDATA')
   }
   geneset=getGmt(gspath)
   total_es <- gsva(as.matrix(total_matrix), geneset,
@@ -387,7 +387,7 @@ GSVA_find_gs_markers=function(em=NULL,seurat_object=NULL,
       merge_em <- Get_HM_gene_change(merge_em,species = 'm')
     }
     if (is.null(gspath)) {
-      gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLAB')
+      gspath <- system.file('extdata','h.all.v7.1.symbols.gmt',package = 'LIANLABDATA')
     }
     geneset <- getGmt(gspath)
     gs_es <- gsva(as.matrix(merge_em), geneset, min.sz=min.sz,
