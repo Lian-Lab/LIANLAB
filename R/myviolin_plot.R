@@ -243,6 +243,12 @@ stacked_violin_plot=function(gene,seurat_object,cluster=NULL,limits.max=7,
     m = multiplot(plotlist = plot.list,cols=1)
   }
   dev.off()
+  
+   if(flip){
+    m = multiplot(plotlist = plot.list,cols = length(gene))
+  }else{
+    m = multiplot(plotlist = plot.list,cols=1)
+  }
 }
 
 
@@ -324,5 +330,6 @@ plot_violin_manual <- function(gene,seurat_object,cluster=NULL, axis=FALSE,
     pdf(paste0(g,"_vln_manual",".pdf"),width = width,height = height)
     print(p)
     dev.off()
+    print(p)
   }
 }
