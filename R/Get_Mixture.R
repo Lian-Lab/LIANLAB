@@ -363,3 +363,28 @@ test_package = function(package_list){
       stop('Please install the package.')
     }
 }
+
+#' To split the cells to 'group' by 'samples'
+#'
+#' @param seurat.obj the seurat.obj to add group
+#' @param group.list a list including the information of the sampels
+#'
+#' @return seurat.obj
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' group.list <- list('control' = c("A_L_001","A_L_002","A_L_003","A_L_004"),
+#'                    'expr' = c("A_L_009","A_L_010","A_L_011","A_L_012","A_L_013"))
+#' seurat.obj <- Get_group(seurat.obj,group.list)
+#' }
+Get_samples_to_group <- function(seurat.obj, group.list){
+  seurat.obj$group <- seurat.obj$samples
+  for (i in names(group.list)) {
+    seurat.obj$group[seurat.obj$group%in%group.list[[i]]] = i
+
+  }
+  seurat.obj$group = as.factor(seurat.obj$group)
+  return(seurat.obj)
+}
+

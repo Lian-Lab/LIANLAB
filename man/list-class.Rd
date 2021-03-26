@@ -7,7 +7,7 @@
 \alias{T_NK_cluster}
 \title{List with colors}
 \format{
-A list with 9 characters.
+A list with 11 characters.
 \describe{
 \item{\code{colors}}{character COLUMN_DESCRIPTION}
 \item{\code{color_chocolate}}{character COLUMN_DESCRIPTION}
@@ -18,6 +18,8 @@ A list with 9 characters.
 \item{\code{color_yellow}}{character COLUMN_DESCRIPTION}
 \item{\code{colors16}}{character COLUMN_DESCRIPTION}
 \item{\code{colors_new}}{character COLUMN_DESCRIPTION}
+\item{\code{color_zzm}}{character COLUMN_DESCRIPTION}
+\item{\code{my_color}}{character COLUMN_DESCRIPTION}
 }
 
 A list with 16 characters.

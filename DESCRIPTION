@@ -1,5 +1,5 @@
 Package: LIANLAB
-Title: To integrate analysis methods and simplify analysis process.
+Title: To integrate analysis methods and simplify analysis process
 Version: 0.0.1.0
 Authors@R: c(
     person(given = "Bian",

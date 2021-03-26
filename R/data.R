@@ -1,6 +1,6 @@
 #' @title List with colors
 #' @describeIn list for many kinds of colors
-#' @format A list with 9 characters.
+#' @format A list with 11 characters.
 #' \describe{
 #'   \item{\code{colors}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{color_chocolate}}{character COLUMN_DESCRIPTION}
@@ -11,6 +11,8 @@
 #'   \item{\code{color_yellow}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{colors16}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{colors_new}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{color_zzm}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{my_color}}{character COLUMN_DESCRIPTION}
 #' }
 #' @details DETAILS
 "colorful"
