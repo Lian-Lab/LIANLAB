@@ -43,7 +43,7 @@ stacked_violin_plot=function(gene,seurat_object,cluster=NULL,limits.max=7,
   plot.list=list()
   #g=gene[5]
   no=1
-  gene=c(gene[1],gene,gene[length(gene)])
+  #gene=c(gene[1],gene,gene[length(gene)])
   for (g in gene) {
     ave_gene_choose=ave_expression[which(rownames(ave_expression)==g),]
     data_matrix_choose=as.data.frame(data_matrix)[which(rownames(data_matrix)==g),]
@@ -51,7 +51,7 @@ stacked_violin_plot=function(gene,seurat_object,cluster=NULL,limits.max=7,
     df=data.frame(expression=as.numeric(data_matrix_choose),cluster=as.character(seurat_object@active.ident))
     mean=vector()
     for (i in df$cluster) {
-      mean=c(mean,ave_gene_choose[,i])
+      mean=c(mean,ave_gene_choose[i])
     }
     df[,"mean"]=as.data.frame(mean)
     df=as.data.frame(df)
@@ -243,6 +243,12 @@ stacked_violin_plot=function(gene,seurat_object,cluster=NULL,limits.max=7,
     m = multiplot(plotlist = plot.list,cols=1)
   }
   dev.off()
+  
+   if(flip){
+    m = multiplot(plotlist = plot.list,cols = length(gene))
+  }else{
+    m = multiplot(plotlist = plot.list,cols=1)
+  }
 }
 
 
@@ -284,7 +290,7 @@ plot_violin_manual <- function(gene,seurat_object,cluster=NULL, axis=FALSE,
     df=data.frame(expression=data_matrix_choose,cluster=as.character(seurat_object@active.ident))
     mean=vector()
     for (i in df$cluster) {
-      mean=c(mean,ave_gene_choose[,i])
+      mean=c(mean,ave_gene_choose[i])
     }
     df$mean=mean
     df$cluster=factor(df$cluster,levels=levels(seurat_object))
@@ -324,5 +330,6 @@ plot_violin_manual <- function(gene,seurat_object,cluster=NULL, axis=FALSE,
     pdf(paste0(g,"_vln_manual",".pdf"),width = width,height = height)
     print(p)
     dev.off()
+    print(p)
   }
 }

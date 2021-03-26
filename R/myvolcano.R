@@ -1,6 +1,6 @@
 #' Volcano for DE genes.
 #'
-#' @param df DE gene matrix, including cols named avg_logFC and p_val_adj
+#' @param df DE gene matrix, including cols named avg_log2FC and p_val_adj
 #' @param gene.plot number of tags for genes
 #' @param logfc.cutoff cutoff of logFC
 #' @param p.cutoff cutoff of p value
@@ -23,15 +23,15 @@
 
 myvolcano=function(df, gene.plot = 10, logfc.cutoff = 0.5, p.cutoff = 0.01){
 
-  avg_logFC <- p_val_adj <- group <- NULL
+  avg_log2FC <- p_val_adj <- group <- NULL
 
   df[,'color'] = rep('#BEBEBE',times=nrow(df))
   df[,'group'] = rep('#Other',times=nrow(df))
   df$label = rownames(df)
   df$gene = rownames(df)
 
-  up = df %>% filter(avg_logFC > logfc.cutoff & (p_val_adj < p.cutoff))
-  down = df %>% filter(avg_logFC < -logfc.cutoff & (p_val_adj < p.cutoff))
+  up = df %>% filter(avg_log2FC > logfc.cutoff & (p_val_adj < p.cutoff))
+  down = df %>% filter(avg_log2FC < -logfc.cutoff & (p_val_adj < p.cutoff))
 
   df[up$gene,'color'] = '#FF0000'
   df[up$gene,'group'] = 'up'
@@ -45,7 +45,7 @@ myvolcano=function(df, gene.plot = 10, logfc.cutoff = 0.5, p.cutoff = 0.01){
   top = top %>% filter(group !='Other')
   df[!df$gene %in% (top$gene),'label'] = ''
 
-  p <- ggplot(df, aes(avg_logFC, p_val_adj,color = group)) + geom_point(size=4)+
+  p <- ggplot(df, aes(avg_log2FC, p_val_adj,color = group)) + geom_point(size=4)+
     labs(x='logFC',y='-Log10 P')+
     theme(
       plot.title = element_text(hjust = 0.5),
