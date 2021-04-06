@@ -7,7 +7,7 @@
 myvolcano(df, gene.plot = 10, logfc.cutoff = 0.5, p.cutoff = 0.01)
 }
 \arguments{
-\item{df}{DE gene matrix, including cols named avg_logFC and p_val_adj}
+\item{df}{DE gene matrix, including cols named avg_log2FC and p_val_adj}
 
 \item{gene.plot}{number of tags for genes}
 
