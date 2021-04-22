@@ -72,7 +72,7 @@ Get_percentplot_split = function(seurat_object,filename=NULL,order='increasing',
   if (is.null(colorm)) {
     colorful <- LIANLAB::colorful
     colors = colorful[["colors"]]
-    colorm <- data.frame(frequency_matrix$Cluster,colors[1:length(rownames(frequency_matrix))])
+    colorm <- data.frame(frequency_matrix$cluster,colors[1:length(rownames(frequency_matrix))])
     row.names(colorm) <- colorm[,1]
   }
 
@@ -131,7 +131,7 @@ Get_percentplot = function(seurat_object,filename,colorm=NULL){
   if (is.null(colorm)) {
     colorful <- LIANLAB::colorful
     colors = colorful[["colors"]]
-    colorm <- data.frame(frequency_matrix$Cluster,colors[1:length(rownames(frequency_matrix))])
+    colorm <- data.frame(frequency_matrix$cluster,colors[1:length(rownames(frequency_matrix))])
     row.names(colorm) <- colorm[,1]
   }
 
