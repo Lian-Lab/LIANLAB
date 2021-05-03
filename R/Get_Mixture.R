@@ -132,9 +132,9 @@ top_m = function(markers,m){
 #' markers_top <- top_m( markers, m = 20)
 #' }
 top_up_down_m = function(marker,m){
-  p_val_adj <- avg_logFC <- NULL
-  marker = subset(marker,subset=p_val_adj<0.05&abs(avg_logFC)>0.5)
-  marker = marker[order(marker$avg_logFC,decreasing = T),]
+  p_val_adj <- avg_log2FC <- NULL
+  marker = subset(marker,subset=p_val_adj<0.05&abs(avg_log2FC)>0.5)
+  marker = marker[order(marker$avg_log2FC,decreasing = T),]
   marker_up = marker[1:m,]
   marker_down = marker[(nrow(marker)-m):nrow(marker),]
   marker = rbind(marker_up,marker_down)
