@@ -98,11 +98,11 @@ if (class(Objects)=="data.frame"|class(Objects)=="matrix") {
 #' markers_top <- top_m( markers, m = 20)
 #' }
 top_m = function(markers,m){
-  cluster <- avg_logFC <- p_val_adj <- avg_logFC <- NULL
-  markers = subset(markers,subset = p_val_adj<0.05&avg_logFC>0.5)
+  cluster <- avg_logFC <- p_val_adj <- avg_log2FC <- NULL
+  markers = subset(markers,subset = p_val_adj<0.05&avg_log2FC>0.5)
 
   dim(markers)
-  markers = markers[order(markers$cluster,markers$avg_logFC,decreasing = T),]
+  markers = markers[order(markers$cluster,markers$avg_log2FC,decreasing = T),]
 
   mar2 = data.frame()
   for (i in levels(markers$cluster)) {
@@ -133,8 +133,8 @@ top_m = function(markers,m){
 #' }
 top_up_down_m = function(marker,m){
   p_val_adj <- avg_log2FC <- NULL
-  marker = subset(marker,subset=p_val_adj<0.05&abs(avg_log2FC)>0.5)
-  marker = marker[order(marker$avg_log2FC,decreasing = T),]
+  marker = subset(marker,subset = p_val_adj<0.05 & abs(avg_log2FC)>0.5)
+  marker = marker[order(marker$avg_log2FC ,decreasing = T),]
   marker_up = marker[1:m,]
   marker_down = marker[(nrow(marker)-m):nrow(marker),]
   marker = rbind(marker_up,marker_down)
