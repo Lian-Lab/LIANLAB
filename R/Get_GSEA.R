@@ -32,10 +32,10 @@ Get_GSEA = function(object,species=c('m','h'),category=NULL,filename=NULL,p.valu
 
   if (species=='h') {
     msigdf.human <- msigdf::msigdf.human
-    c2 <- msigdf.human %>% filter(category_code == category) %>% select(geneset, symbol ) %>% as.data.frame
+    c2 <- msigdf.human %>% filter(collection == category) %>% select(geneset, entrez) %>% as.data.frame
   }else{
     msigdf.mouse <- msigdf::msigdf.mouse
-    c2 <- msigdf.mouse %>% filter(category_code == category) %>% select(geneset, mouse.symbol) %>% as.data.frame
+    c2 <- msigdf.mouse %>% filter(collection == category) %>% select(geneset, entrez) %>% as.data.frame
   }
   colorful <- LIANLAB::colorful
   colors = colorful[["colors"]]
