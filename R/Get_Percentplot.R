@@ -117,7 +117,7 @@ Get_percentplot = function(seurat_object,filename,colorm=NULL){
 
 
   row.names(frequency_matrix)=frequency_matrix[,1]
-  colnames(frequency_matrix)[1] = 'Cluster'
+  colnames(frequency_matrix)[1] = 'cluster'
   colnames(frequency_matrix)[2] = 'count'
   add = data.frame(rep('Sample',nrow(frequency_matrix)))
   colnames(add)[1] = 'Sample'
@@ -137,7 +137,7 @@ Get_percentplot = function(seurat_object,filename,colorm=NULL){
 
     color_percent=as.character(colorm[,2])
 
-  p <- ggplot(frequency_matrix, aes(x = Sample, y=Percent, group=Cluster)) +
+  p <- ggplot(frequency_matrix, aes(x = Sample, y=Percent, group=cluster)) +
     geom_bar(stat="identity", position="fill", aes(fill=Cluster)) + xlab('') +
     scale_fill_manual(values=color_percent,breaks=data_rownames) + theme_bw() +
     theme(panel.border = element_blank(),panel.grid.major = element_blank(),
